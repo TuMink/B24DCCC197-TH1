@@ -53,6 +53,18 @@
       },
     ],
   },
+  {
+	name: 'Bài tập thực hành 2',
+	icon: 'code',
+	routes: [
+		{
+			name: 'Bài 1: Oẳn tù tì',
+			path: '/bai-tap-2/bai-1',
+			component: './BaiTap2/Bai1',
+		},
+	]
+
+  },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
@@ -66,7 +78,6 @@
 	// 		},
 	// 	],
 	// },
-
 	{
 		path: '/notification',
 		routes: [
