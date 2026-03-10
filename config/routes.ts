@@ -62,8 +62,33 @@
 			path: '/bai-tap-2/bai-1',
 			component: './BaiTap2/Bai1',
 		},
+		{
+        name: 'Bài 2: Ngân hàng câu hỏi',
+        path: '/bai-tap-2/bai-2',
+        routes: [
+          {
+            name: '1. Khối kiến thức',
+            path: '/bai-tap-2/bai-2/khoi-kien-thuc',
+            component: './BaiTap2/Bai2/KhoiKienThuc', // Đã lồng thêm Bai2/
+          },
+          {
+            name: '2. Môn học',
+            path: '/bai-tap-2/bai-2/mon-hoc',
+            component: './BaiTap2/Bai2/MonHoc', 
+          },
+          {
+            name: '3. Ngân hàng câu hỏi',
+            path: '/bai-tap-2/bai-2/cau-hoi',
+            component: './BaiTap2/Bai2/CauHoi', 
+          },
+          {
+            name: '4. Quản lý đề thi',
+            path: '/bai-tap-2/bai-2/de-thi',
+            component: './BaiTap2/Bai2/DeThi', 
+          },
+        ],
+      },
 	]
-
   },
 	// DANH MUC HE THONG
 	// {

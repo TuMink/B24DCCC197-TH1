@@ -77,7 +77,7 @@ const Bai1 = () => {
     return (
         <Card title = "Bài 1: Trò chơi Oẳn tù tì">
             <Space direction='vertical' style = {{width: '100%', textAlign: 'center'}}>
-                {/* KHU VỰC 1: TIÊU ĐỀ VÀ NÚT BẤM */}{/* KHU VỰC 1: TIÊU ĐỀ VÀ NÚT BẤM */}
+                {/* KHU VỰC 1: TIÊU ĐỀ VÀ NÚT BẤM */}
                 <Title level = {4}>Mời bạn ra tay!</Title>
             {/* Gắn sự kiện onClick gọi hàm handlePlay và truyền chữ tương ứng vào */}
             <Space size="large">
