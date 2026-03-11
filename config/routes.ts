@@ -53,6 +53,45 @@
       },
     ],
   },
+
+  {
+  name: 'Bài tập thực hành 3',
+  icon: 'code', // Icon lịch cho phù hợp với bài đặt lịch
+  path: '/bai-tap-3',
+  routes: [
+    {
+      name: 'Báo cáo và thống kê',
+      path: '/bai-tap-3/dashboard',
+      component: './BaiTap3/Dashboard',
+    },
+    {
+      name: 'Quản lý danh mục',
+      path: '/bai-tap-3/danh-muc',
+      routes: [
+        {
+          name: 'Dịch vụ',
+          path: '/bai-tap-3/danh-muc/dich-vu',
+          component: './BaiTap3/DichVu',
+        },
+        {
+          name: 'Nhân viên',
+          path: '/bai-tap-3/danh-muc/nhan-vien',
+          component: './BaiTap3/NhanVien',
+        },
+      ]
+    },
+    {
+      name: 'Quản lý lịch hẹn',
+      path: '/bai-tap-3/lich-hen',
+      component: './BaiTap3/LichHen',
+    },
+    {
+      name: 'Đánh giá và Phản hồi',
+      path: '/bai-tap-3/danh-gia',
+      component: './BaiTap3/DanhGia',
+    },
+  ]
+},
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
