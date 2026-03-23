@@ -73,6 +73,11 @@
         name: 'Cấu Hình Biểu Mẫu',
         component: './BaiTap4/CauHinh',
       },
+	  {
+        path: '/bai-tap-4/thong-tin-van-bang',
+        name: 'Thông Tin Văn Bằng',
+        component: './BaiTap4/ThongTinVanBang',
+      },
     ],
   },
 	// DANH MUC HE THONG

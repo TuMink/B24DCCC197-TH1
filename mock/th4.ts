@@ -14,7 +14,7 @@ let cauHinhDB = [
   { id: 'c1', tenTruong: 'Dân tộc', kieuDuLieu: 'String' },
   { id: 'c2', tenTruong: 'Điểm TB', kieuDuLieu: 'Number' }
 ];
-
+let thongTinVanBangDB: any[] = [];
 
 export default {
   // --- MODULE 1: SỔ VĂN BẰNG ---
@@ -80,6 +80,42 @@ export default {
   },
   'DELETE /mock-api/cau-hinh/:id': (req: Request, res: Response) => {
     cauHinhDB = cauHinhDB.filter((i: any) => i.id !== req.params.id);
+    res.send({ success: true });
+  },
+  // --- MODULE 4: THÔNG TIN VĂN BẰNG ---
+  'GET /mock-api/thong-tin-van-bang/page': (req: Request, res: Response) => {
+    res.send({ data: { result: thongTinVanBangDB, total: thongTinVanBangDB.length }, success: true });
+  },
+  'POST /mock-api/thong-tin-van-bang': (req: Request, res: Response) => {
+    const body = req.body;
+    let soVaoSoTudong = 0;
+
+    // LOGIC TỰ ĐỘNG TĂNG SỐ VÀO SỔ:
+    // 1. Tìm cuốn Sổ Văn Bằng đang chứa cái idQuyetDinh mà người dùng vừa chọn
+    const soVanBang = soVanBangDB.find((s: any) => s.idQuyetDinh === body.idQuyetDinh);
+    if (soVanBang) {
+      soVanBang.soHienTai += 1; // 2. Tăng số hiện tại của sổ lên 1
+      soVaoSoTudong = soVanBang.soHienTai; // 3. Lấy số đó làm "Số vào sổ" cho văn bằng này
+    } else {
+      soVaoSoTudong = Math.floor(Math.random() * 1000); // Back-up nếu QĐ chưa có sổ
+    }
+    const newData = { 
+      ...body, 
+      id: Date.now().toString(),
+      soVaoSo: soVaoSoTudong 
+    };
+    
+    thongTinVanBangDB.unshift(newData);
+    res.send({ data: newData, success: true });
+  },
+  'PUT /mock-api/thong-tin-van-bang/:id': (req: Request, res: Response) => {
+    const idx = thongTinVanBangDB.findIndex((i: any) => i.id === req.params.id);
+    // Lưu ý: Cập nhật không cho phép sửa số vào sổ
+    if (idx > -1) thongTinVanBangDB[idx] = { ...thongTinVanBangDB[idx], ...req.body, soVaoSo: thongTinVanBangDB[idx].soVaoSo };
+    res.send({ success: true });
+  },
+  'DELETE /mock-api/thong-tin-van-bang/:id': (req: Request, res: Response) => {
+    thongTinVanBangDB = thongTinVanBangDB.filter((i: any) => i.id !== req.params.id);
     res.send({ success: true });
   }
 };
