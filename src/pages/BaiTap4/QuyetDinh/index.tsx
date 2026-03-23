@@ -16,7 +16,9 @@ const QuyetDinh = () => {
     visibleForm,
     setVisibleForm,
     edit,
+    setEdit,
     record,
+    setRecord,
     handleEdit,
   } = useModel('th4.QuyetDinh');
 
@@ -55,7 +57,19 @@ const QuyetDinh = () => {
   return (
     <Card 
       title="QUẢN LÝ QUYẾT ĐỊNH TỐT NGHIỆP" 
-      extra={<Button type="primary" icon={<PlusOutlined />} onClick={() => setVisibleForm(true)}>Thêm Mới</Button>}
+      extra={
+        <Button 
+          type="primary" 
+          icon={<PlusOutlined />} 
+          onClick={() => {
+            setEdit(false);        // Tắt chế độ Edit
+            setRecord(undefined);  // Xóa sạch data cũ
+            setVisibleForm(true);  // Bật form lên
+          }}
+        >
+          Thêm Mới
+        </Button>
+      }
     >
       <Table 
         dataSource={danhSach} 

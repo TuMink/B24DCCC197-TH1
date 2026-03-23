@@ -6,6 +6,7 @@ export interface ISoVanBang {
   _id?: string;
   nam: number;
   soHienTai: number;
+  idQuyetDinh?: string;
 }
 
 // 2. Xuất ra Model để các component (giao diện) có thể dùng chung

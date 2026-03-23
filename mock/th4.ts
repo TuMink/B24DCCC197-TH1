@@ -7,7 +7,7 @@ let soVanBangDB = [
 ];
 
 let quyetDinhDB = [
-  { id: '101', soQuyetDinh: '42/QĐ-BGD', tenQuyetDinh: 'Tốt nghiệp đợt 1 - 2025', idSo: '1' }
+  { id: '101', soQuyetDinh: '42/QĐ-BGD', tenQuyetDinh: 'Tốt nghiệp đợt 1 - 2025'}
 ];
 
 let cauHinhDB = [
