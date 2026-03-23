@@ -2,7 +2,9 @@ import axios from '@/utils/axios';
 import { ip3 } from '@/utils/ip';
 
 const useInitService = (url: string, ip?: string) => {
-	const finalIp = ip ?? ip3;
+	// [ĐIỂM SỬA CHỮA]: Nhận diện chữ 'mock-api' để ngắt kết nối với server thật của trường
+	const isMock = url.includes('mock-api');
+	const finalIp = isMock ? '' : (ip ?? ip3);
 
 	const getService = (
 		payload: { page?: number; limit?: number; condition?: any },

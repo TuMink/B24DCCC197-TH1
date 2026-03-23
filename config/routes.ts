@@ -63,21 +63,6 @@
         name: 'Quản lý Sổ Văn Bằng',
         component: './BaiTap4/SoVanBang',
       },
-      {
-        path: '/bai-tap-4/quyet-dinh',
-        name: 'Quyết định tốt nghiệp',
-        component: './BaiTap4/QuyetDinh',
-      },
-      {
-        path: '/bai-tap-4/cau-hinh',
-        name: 'Cấu hình biểu mẫu',
-        component: './BaiTap4/CauHinh',
-      },
-      {
-        path: '/bai-tap-4/van-bang',
-        name: 'Quản lý Văn bằng',
-        component: './BaiTap4/VanBang',
-      },
     ],
   },
 	// DANH MUC HE THONG
