@@ -63,6 +63,11 @@
         name: 'Quản lý Sổ Văn Bằng',
         component: './BaiTap4/SoVanBang',
       },
+	  {
+        path: '/bai-tap-4/quyet-dinh',
+        name: 'Quyết Định Tốt Nghiệp',
+        component: './BaiTap4/QuyetDinh',
+      },
     ],
   },
 	// DANH MUC HE THONG

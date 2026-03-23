@@ -15,6 +15,7 @@ let cauHinhDB = [
   { id: 'c2', tenTruong: 'Điểm TB', kieuDuLieu: 'Number' }
 ];
 
+
 export default {
   // --- MODULE 1: SỔ VĂN BẰNG ---
   'GET /mock-api/so-van-bang/page': (req: Request, res: Response) => {
@@ -42,6 +43,21 @@ export default {
   },
   'GET /mock-api/quyet-dinh/all': (req: Request, res: Response) => {
     res.send({ data: quyetDinhDB, success: true });
+  },
+  'POST /mock-api/quyet-dinh': (req: Request, res: Response) => {
+    const newData = { ...req.body, id: Date.now().toString() };
+    quyetDinhDB.unshift(newData);
+    res.send({ data: newData, success: true });
+  },
+  'PUT /mock-api/quyet-dinh/:id': (req: Request, res: Response) => {
+    const { id } = req.params;
+    const idx = quyetDinhDB.findIndex((i: any) => i.id === id);
+    if (idx > -1) quyetDinhDB[idx] = { ...quyetDinhDB[idx], ...req.body };
+    res.send({ success: true });
+  },
+  'DELETE /mock-api/quyet-dinh/:id': (req: Request, res: Response) => {
+    quyetDinhDB = quyetDinhDB.filter((i: any) => i.id !== req.params.id);
+    res.send({ success: true });
   },
 
   // --- MODULE 3: CẤU HÌNH BIỂU MẪU ---
