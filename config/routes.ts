@@ -78,6 +78,11 @@
         name: 'Thông Tin Văn Bằng',
         component: './BaiTap4/ThongTinVanBang',
       },
+	  {
+        path: '/bai-tap-4/tra-cuu',
+        name: 'Tra Cứu Văn Bằng',
+        component: './BaiTap4/TraCuu',
+      },
     ],
   },
 	// DANH MUC HE THONG

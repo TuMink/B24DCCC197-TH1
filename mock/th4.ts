@@ -6,7 +6,7 @@ let soVanBangDB = [
   { id: '2', nam: 2026, soHienTai: 0 }
 ];
 
-let quyetDinhDB = [
+let quyetDinhDB: any[]= [
   { id: '101', soQuyetDinh: '42/QĐ-BGD', tenQuyetDinh: 'Tốt nghiệp đợt 1 - 2025'}
 ];
 
@@ -117,5 +117,40 @@ export default {
   'DELETE /mock-api/thong-tin-van-bang/:id': (req: Request, res: Response) => {
     thongTinVanBangDB = thongTinVanBangDB.filter((i: any) => i.id !== req.params.id);
     res.send({ success: true });
+  },
+  // 👇 BỔ SUNG MODULE 5: TRA CỨU VĂN BẰNG 👇
+  'GET /mock-api/tra-cuu': (req: Request, res: Response) => {
+    const { soVaoSo, soHieu, maSV, hoTen, ngaySinh } = req.query;
+    
+    // 1. Kiểm tra luật chống spam (Ít nhất 2 tham số)
+    const params = [soVaoSo, soHieu, maSV, hoTen, ngaySinh].filter(Boolean);
+    if (params.length < 2) {
+      return res.send({ success: false, message: 'Hệ thống yêu cầu nhập ít nhất 2 tham số để tra cứu!' });
+    }
+
+    // 2. Thuật toán lọc (Lọc tương đối chứa chữ - includes)
+    let results = thongTinVanBangDB.filter((item: any) => {
+      let match = true;
+      if (soVaoSo && String(item.soVaoSo) !== String(soVaoSo)) match = false;
+      if (soHieu && !item.soHieu.toLowerCase().includes(String(soHieu).toLowerCase())) match = false;
+      if (maSV && !item.maSV.toLowerCase().includes(String(maSV).toLowerCase())) match = false;
+      if (hoTen && !item.hoTen.toLowerCase().includes(String(hoTen).toLowerCase())) match = false;
+      if (ngaySinh && item.ngaySinh !== ngaySinh) match = false;
+      return match;
+    });
+
+    // 3. Thống kê ngầm: Tăng lượt tra cứu cho Quyết định
+    if (results.length > 0) {
+      // Tìm các idQuyetDinh duy nhất trong đống kết quả
+      const uniqueQdIds = [...new Set(results.map((r: any) => r.idQuyetDinh))];
+      uniqueQdIds.forEach(qdId => {
+        const qd = quyetDinhDB.find((q: any) => q.id === qdId);
+        if (qd) {
+          qd.luotTraCuu = (qd.luotTraCuu || 0) + 1; // Cộng dồn lượt tìm kiếm
+        }
+      });
+    }
+
+    res.send({ data: results, success: true });
   }
 };
