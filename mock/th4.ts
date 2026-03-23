@@ -66,5 +66,20 @@ export default {
   },
   'GET /mock-api/cau-hinh/all': (req: Request, res: Response) => {
     res.send({ data: cauHinhDB, success: true });
+  },
+  'POST /mock-api/cau-hinh': (req: Request, res: Response) => {
+    const newData = { ...req.body, id: Date.now().toString() };
+    cauHinhDB.unshift(newData);
+    res.send({ data: newData, success: true });
+  },
+  'PUT /mock-api/cau-hinh/:id': (req: Request, res: Response) => {
+    const { id } = req.params;
+    const idx = cauHinhDB.findIndex((i: any) => i.id === id);
+    if (idx > -1) cauHinhDB[idx] = { ...cauHinhDB[idx], ...req.body };
+    res.send({ success: true });
+  },
+  'DELETE /mock-api/cau-hinh/:id': (req: Request, res: Response) => {
+    cauHinhDB = cauHinhDB.filter((i: any) => i.id !== req.params.id);
+    res.send({ success: true });
   }
 };

@@ -68,6 +68,11 @@
         name: 'Quyết Định Tốt Nghiệp',
         component: './BaiTap4/QuyetDinh',
       },
+	  {
+        path: '/bai-tap-4/cau-hinh',
+        name: 'Cấu Hình Biểu Mẫu',
+        component: './BaiTap4/CauHinh',
+      },
     ],
   },
 	// DANH MUC HE THONG
