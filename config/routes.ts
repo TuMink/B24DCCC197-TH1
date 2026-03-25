@@ -53,6 +53,36 @@
       },
     ],
   },
+  {
+        path: '/bai-tap-5',
+        name: 'Bài tập thực hành 5',
+        icon: 'team', // Bạn có thể giữ icon hoặc đổi tùy ý
+        routes: [
+          // --- Minh phụ trách ---
+          {
+            path: '/bai-tap-5/danh-sach-clb',
+            name: 'Danh sách Câu lạc bộ',
+            component: './BaiTap5/DanhSachCLB',
+          },
+          // --- Khánh phụ trách ---
+          {
+            path: '/bai-tap-5/don-dang-ky',
+            name: 'Đơn đăng ký',
+            component: './BaiTap5/DonDangKy',
+          },
+          {
+            path: '/bai-tap-5/thanh-vien',
+            name: 'Thành viên CLB',
+            component: './BaiTap5/ThanhVien',
+          },
+          // --- Minh phụ trách ---
+          {
+            path: '/bai-tap-5/bao-cao',
+            name: 'Báo cáo Thống kê',
+            component: './BaiTap5/BaoCaoThongKe',
+          },
+        ],
+      },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
