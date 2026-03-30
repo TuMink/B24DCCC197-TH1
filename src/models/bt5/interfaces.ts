@@ -1,19 +1,11 @@
 export interface ICauLacBo {
   id?: string;
-  anhDaiDien: string; 
+  anhDaiDien?: string; 
   tenCLB: string;
   ngayThanhLap: string;
-  moTa: string;       
+  moTa?: string;       // Sẽ dùng TinyEditor để nhập cái này
   chuNhiem: string;
-  hoatDong: boolean;  
+  hoatDong: boolean;   
 }
 
-// (Tạm thời cứ để đây cho đồng đội dùng luôn)
-export interface IDonDangKy {
-  id?: string;
-  hoTen: string;
-  email: string;
-  idCLB: string;
-  trangThai: 'Pending' | 'Approved' | 'Rejected';
-  // ... các trường khác
-}
+// Bạn có thể để sẵn IDonDangKy của đồng đội ở dưới luôn nếu muốn, không thì thôi
