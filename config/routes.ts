@@ -53,6 +53,27 @@
       },
     ],
   },
+  {
+    name: 'Bài TH6: Quản lý Du lịch',
+    path: '/bai-tap-6',
+    routes: [
+      {
+        path: '/bai-tap-6/kham-pha',
+        name: '1. Khám phá điểm đến',
+        component: './BaiTap6/Home',
+      },
+      {
+        path: '/bai-tap-6/lich-trinh',
+        name: '2. Lịch trình & Ngân sách',
+        component: './BaiTap6/ItineraryBudget', 
+      },
+      {
+        path: '/bai-tap-6/admin',
+        name: '3. Quản trị (Admin)',
+        component: './BaiTap6/Admin',
+      },
+    ],
+  },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
