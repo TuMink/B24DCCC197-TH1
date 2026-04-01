@@ -54,7 +54,7 @@
     ],
   },
   {
-    name: 'Bài TH6: Quản lý Du lịch',
+    name: 'Bài tập thực hành 6',
     path: '/bai-tap-6',
     routes: [
       {
@@ -64,12 +64,17 @@
       },
       {
         path: '/bai-tap-6/lich-trinh',
-        name: '2. Lịch trình & Ngân sách',
-        component: './BaiTap6/ItineraryBudget', 
+        name: '2. Lịch trình',
+        component: './BaiTap6/Itinerary', 
+      },
+      {
+        path: '/bai-tap-6/ngan-sach',
+        name: '3. Ngân sách',
+        component: './BaiTap6/Budget', 
       },
       {
         path: '/bai-tap-6/admin',
-        name: '3. Quản trị (Admin)',
+        name: '4. Quản trị (Admin)',
         component: './BaiTap6/Admin',
       },
     ],
