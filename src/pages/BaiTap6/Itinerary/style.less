@@ -1,3 +1,64 @@
 .container {
   padding: 24px;
+  background-color: #f0f2f5;
+  min-height: calc(100vh - 100px);
+}
+
+.boardScroll {
+  overflow-x: auto;
+  padding-bottom: 16px;
+  
+  /* Tùy chỉnh thanh cuộn ngang cho đẹp */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+}
+
+.dayColumn {
+  background-color: #ebecf0;
+  border-radius: 8px;
+  border: none;
+  
+  :global(.ant-card-body) {
+    padding: 12px;
+  }
+}
+
+.dropZone {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emptyText {
+  border: 2px dashed #d9d9d9;
+  border-radius: 8px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8c8c8c;
+  font-weight: 500;
+}
+
+.draggableCard {
+  cursor: grab;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  &:active {
+    cursor: grabbing; // Hiệu ứng bàn tay nắm lại khi đang kéo
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: scale(0.98);
+  }
 }
