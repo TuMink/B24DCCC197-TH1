@@ -9,11 +9,11 @@ declare namespace BaiTap6 {
     priceLodging: number;
     priceTransport: number;
     rating: number;
-    timeToVisit: number; // Thời gian tham quan (giờ)
+    timeToVisit: number; 
   }
 
   export interface ItineraryItem {
-    id: string; // Khóa chính (uuid) khi thêm vào lịch trình
+    id: string; 
     destination: Destination;
     day: number;
     order: number;

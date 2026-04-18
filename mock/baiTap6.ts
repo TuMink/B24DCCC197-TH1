@@ -16,7 +16,7 @@ export default {
             priceLodging: 1500000,
             priceTransport: 300000,
             rating: 4.8,
-            timeToVisit: 8, // SỬA LẠI: Chỉ tốn 8 tiếng tham quan
+            timeToVisit: 8, 
           },
           {
             id: 'd2',
@@ -28,7 +28,7 @@ export default {
             priceLodging: 1000000,
             priceTransport: 500000,
             rating: 4.6,
-            timeToVisit: 12, // SỬA LẠI: Tốn 12 tiếng tham quan
+            timeToVisit: 12, 
           }
         ],
       });
