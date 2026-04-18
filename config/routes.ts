@@ -53,6 +53,34 @@
       },
     ],
   },
+  {
+    name: 'Bài tập thực hành 7',
+    path: '/bai-tap-7',
+    icon: 'project',
+    routes: [
+      {
+        path: '/bai-tap-7/dang-nhap',
+        name: 'Đăng nhập',
+        component: './BaiTap7/Login',
+        hideInMenu: true, // Ẩn khỏi menu bên trái (vì ta sẽ tự động chuyển hướng khi chưa đăng nhập)
+      },
+      {
+        path: '/bai-tap-7/cong-viec',
+        name: '1. Danh sách công việc',
+        component: './BaiTap7/Tasks',
+      },
+      {
+        path: '/bai-tap-7/lich',
+        name: '2. Lịch (Calendar)',
+        component: './BaiTap7/Calendar',
+      },
+      {
+        path: '/bai-tap-7/thong-ke',
+        name: '3. Thống kê tổng quan',
+        component: './BaiTap7/Dashboard',
+      },
+    ],
+  },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
