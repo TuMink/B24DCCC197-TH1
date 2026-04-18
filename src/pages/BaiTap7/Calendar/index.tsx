@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Calendar, Badge, BadgeProps, Switch, Space, Typography, Tag } from 'antd';
+import { Card, Calendar, Badge, Switch, Space, Typography, Tag } from 'antd';
 import { useModel, history } from 'umi';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 const { Text, Title } = Typography;
 
 const CalendarPage = () => {
   const { currentUser } = useModel('BaiTap7.useAuth');
   const { tasks } = useModel('BaiTap7.useTask');
-  const [showAll, setShowAll] = useState(false);
-
+  
+  const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
     if (!localStorage.getItem('th7_user')) {
@@ -23,23 +23,31 @@ const CalendarPage = () => {
     ? tasks 
     : tasks.filter(t => t.assignee === currentUser.username);
 
-  const dateCellRender = (value: Dayjs) => {
-    const listData = filteredTasks.filter(task => 
-      dayjs(task.deadline).isSame(value, 'day')
-    );
+  // LOGIC HIỂN THỊ (FIX CHUẨN XÁC VỚI MỌI PHIÊN BẢN ANT DESIGN)
+  const dateCellRender = (value: any) => {
+    if (!value) return null;
+    
+    // TUYỆT CHIÊU: Gọi trực tiếp hàm format của giá trị truyền vào (Bất kể nó là Moment hay Dayjs)
+    const cellDateStr = typeof value.format === 'function' 
+      ? value.format('YYYY-MM-DD') 
+      : dayjs(value).format('YYYY-MM-DD');
+
+    const listData = filteredTasks.filter(task => {
+      const taskDateStr = dayjs(task.deadline).format('YYYY-MM-DD');
+      return taskDateStr === cellDateStr;
+    });
 
     return (
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {listData.map((item) => {
-          // Xác định màu sắc Badge dựa trên trạng thái
-          let badgeStatus: BadgeProps['status'] = 'processing'; 
+          let badgeStatus: 'success' | 'processing' | 'default' | 'error' | 'warning' = 'processing'; 
           if (item.status === 'done') badgeStatus = 'success';
           if (item.status === 'todo') {
             badgeStatus = dayjs(item.deadline).isBefore(dayjs(), 'day') ? 'error' : 'warning';
           }
 
           return (
-            <li key={item.id}>
+            <li key={item.id} style={{ marginBottom: '4px' }}>
               <Badge status={badgeStatus} text={item.title} />
             </li>
           );
@@ -48,9 +56,11 @@ const CalendarPage = () => {
     );
   };
 
-  const cellRender = (current: Dayjs, info: any) => {
-    if (info.type === 'date') return dateCellRender(current);
-    return info.originNode;
+  // Dành cho Ant Design v5
+  const cellRender: any = (current: any, info: any) => {
+    if (info && info.type === 'date') return dateCellRender(current);
+    if (info) return info.originNode;
+    return null;
   };
 
   return (
@@ -81,7 +91,8 @@ const CalendarPage = () => {
           </Space>
         </div>
 
-        <Calendar cellRender={cellRender} />
+        {/* Bọc thép: Truyền cả 2 prop để Antd bản nào cũng nhận diện được */}
+        <Calendar dateCellRender={dateCellRender} cellRender={cellRender} />
       </Card>
     </div>
   );
