@@ -1,4 +1,4 @@
-﻿export default [
+﻿﻿export default [
     {
         path: '/user',
         layout: false,
@@ -21,15 +21,6 @@
         component: './TrangChu',
         icon: 'HomeOutlined',
     },
-    // --- Quản lý đơn hàng ----
-    {
-        path: '/quan-ly-don-hang',
-        name: 'Quản lý đơn hàng',
-        component: './quanLyDonHang',
-        icon: 'ShoppingCartOutlined',
-    },
-    // ------------------------------------
-
     {
         path: '/gioi-thieu',
         name: 'About',
@@ -52,7 +43,37 @@
         layout: false,
         hideInMenu: true,
     },
-    { path: '/' },
+        { path: '/' }, // Existing route
+        {
+            path: '/blog',
+            name: 'Blog',
+            icon: 'ReadOutlined',
+            component: '@/pages/Blog',
+            exact: true,
+        },
+        {
+            path: '/blog/:slug',
+            component: '@/pages/Blog/Detail',
+            hideInMenu: true,
+        },
+        {
+            path: '/about',
+            name: 'Giới thiệu',
+            icon: 'UserOutlined',
+            component: '@/pages/About',
+        },
+        {
+            path: '/admin/posts',
+  name: 'Quản lý bài viết',
+  icon: 'table',
+  component: './Admin/Post',
+        },
+        {
+            path: '/admin/tags',
+  name: 'Quản lý thẻ',
+  icon: 'tags',
+  component: './Admin/Tag',
+        },
     { path: '/403', component: './exception/403/403Page', layout: false },
     { path: '/hold-on', component: './exception/DangCapNhat', layout: false },
     { component: './exception/404' },
